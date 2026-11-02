@@ -31,18 +31,6 @@ wheels/
 *.swp
 *.swo
 
-# Project Data (Ignores image tiles/large data while preserving manifests & splits)
-data/raw/
-!data/raw/.gitkeep
-data/processed/
-!data/processed/.gitkeep
-data/samples/
-!data/samples/.gitkeep
-
-# Model Checkpoints (Ignore raw training weights)
-artifacts/checkpoints/
-!artifacts/checkpoints/.gitkeep
-
 # Testing & Coverage
 .pytest_cache/
 .coverage

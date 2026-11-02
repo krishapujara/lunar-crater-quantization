@@ -1,0 +1,26 @@
+{
+  "checkpoint_file": "crater_detector_baseline_best.pth",
+  "epoch": 3,
+  "metrics": {
+    "epoch": 3,
+    "train_loss": 24.5125,
+    "cls_loss": 2.4383,
+    "reg_loss": 22.0743,
+    "val_ap50": 0.0,
+    "val_map_50_95": 0.0,
+    "val_precision": 0.0066,
+    "val_recall": 0.0006,
+    "learning_rate": 1e-06,
+    "epoch_duration_s": 9.8
+  },
+  "metadata": {
+    "architecture": "ssdlite320_mobilenet_v3_large",
+    "num_classes": 2,
+    "best_metric": "val_ap50",
+    "best_value": 0.0
+  },
+  "sha256": "a0562a370fc83dcd802c05d032dc78963d1c74a742fe96d71c4567be50535d7c",
+  "file_size_bytes": 45074973,
+  "file_size_mb": 42.99,
+  "torch_version": "2.14.1+cpu"
+}
