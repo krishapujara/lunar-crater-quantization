@@ -1,0 +1,68 @@
+# Default configuration for Lunar Crater Quantization Research Pipeline
+
+project:
+  name: "lunar-crater-quantization"
+  title: "Micro-Quantized CNN for Onboard Crater Detection — Chandrayaan-Inspired Lunar Research"
+  version: "1.0.0"
+  random_seed: 42
+
+paths:
+  data_dir: "data"
+  raw_data_dir: "data/raw"
+  processed_data_dir: "data/processed"
+  splits_dir: "data/splits"
+  samples_dir: "data/samples"
+  artifacts_dir: "artifacts"
+  checkpoints_dir: "artifacts/checkpoints"
+  quantized_dir: "artifacts/quantized"
+  benchmarks_dir: "artifacts/benchmarks"
+  experiments_db: "artifacts/experiments.db"
+
+data:
+  dataset_name: "LRO_NAC_ChangE4"
+  source_repository: "https://github.com/yizuifangxiuyh/Lunar_Crater_Detection_Data"
+  instrument: "Lunar Reconnaissance Orbiter (LRO) Narrow Angle Camera (NAC)"
+  target_region: "Von Kármán crater / Chang'e-4 landing zone (45°-46° S, 176.4°-178.8° E)"
+  image_size: 320 # Input dimension for SSDLite320
+  min_crater_diameter_px: 6.0
+  split_ratios:
+    train: 0.70
+    val: 0.15
+    test: 0.15
+
+model:
+  architecture: "ssdlite320_mobilenet_v3_large"
+  backbone: "MobileNetV3-Large"
+  num_classes: 2 # 0: background, 1: crater
+  pretrained_backbone: true
+  input_channels: 3
+  input_resolution: [320, 320]
+
+training:
+  batch_size: 4
+  epochs: 8
+  learning_rate: 0.0005
+  weight_decay: 0.0001
+  momentum: 0.9
+  optimizer: "adamw"
+  lr_scheduler: "cosine"
+  early_stopping_patience: 3
+  device: "cpu" # Defaulting to CPU for spaceborne edge representative inference
+  seed: 42
+
+quantization:
+  method: "onnx_dynamic_int8"
+  runtime: "onnxruntime"
+  opset_version: 14
+  weight_type: "QInt8" # Signed 8-bit integer weights
+  target_hardware: "Radiation-Tolerant Spaceborne Embedded CPU / DSP (e.g., LEON4-FT / ARM Cortex)"
+
+evaluation:
+  iou_threshold: 0.50
+  confidence_threshold: 0.35
+  metric_iou_range: [0.50, 0.95, 0.05]
+
+benchmarking:
+  warmup_runs: 5
+  benchmark_runs: 30
+  batch_size: 1

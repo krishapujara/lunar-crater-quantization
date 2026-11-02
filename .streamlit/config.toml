@@ -1,0 +1,17 @@
+[theme]
+base = "dark"
+primaryColor = "#00e5ff"
+backgroundColor = "#0a0e1a"
+secondaryBackgroundColor = "#111827"
+textColor = "#e0e6ed"
+font = "sans serif"
+
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = false
+fileWatcherType = "none"
+folderWatchBlacklist = [".venv", ".pytest_cache", "artifacts/experiments.db", "torch", "torchvision"]
+
+[browser]
+gatherUsageStats = false
