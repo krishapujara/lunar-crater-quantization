@@ -1,0 +1,7 @@
+Metric,FP32 Baseline,INT8 Quantized,Change / Benefit
+Model Format / Runtime,FP32_ONNX (ONNX Runtime),INT8_ONNX (ONNX Runtime),-
+Serialized Size (MB),14.29 MB,4.10 MB,-71.3% (10.19 MB saved)
+Median Latency (ms),19.71 ms,839.48 ms,0.02x speedup (-4159.2% faster)
+P95 Latency (ms),22.21 ms,1226.94 ms,-1204.73 ms diff
+Throughput (FPS),51.4 FPS,1.5 FPS,+-49.9 FPS
+Device / Platform,Windows-11-10.0.26300-SP0,Windows-11-10.0.26300-SP0,4 CPUs

@@ -1,0 +1,19 @@
+{
+  "export_format": "ONNX",
+  "opset_version": 14,
+  "input_resolution": [
+    320,
+    320
+  ],
+  "file_size_bytes": 14984229,
+  "file_size_mb": 14.29,
+  "sha256": "e064c085763a3758a8292ab7be83de45ff4a7e07c1f555e73932ee64b49d723a",
+  "input_names": [
+    "images"
+  ],
+  "output_names": [
+    "boxes",
+    "scores",
+    "labels"
+  ]
+}
